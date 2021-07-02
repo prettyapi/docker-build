@@ -9,6 +9,7 @@ LABEL maintainer="Wen <qinwen923@gmail.com>"
 ARG RESTY_IMAGE_BASE="alpine"
 ARG RESTY_IMAGE_TAG="3.13"
 ARG RESTY_VERSION="1.19.3.2"
+ARG NGINX_VERSION="1.19.3"
 ARG RESTY_OPENSSL_VERSION="1.1.1k"
 ARG RESTY_OPENSSL_PATCH_VERSION="1.1.1f"
 ARG RESTY_OPENSSL_URL_BASE="https://www.openssl.org/source"
@@ -133,8 +134,9 @@ RUN apk add --no-cache --virtual .build-deps \
     && cd /tmp \
     && curl -fSL https://openresty.org/download/openresty-${RESTY_VERSION}.tar.gz -o openresty-${RESTY_VERSION}.tar.gz \
     && tar xzf openresty-${RESTY_VERSION}.tar.gz \
-    && cd /tmp/openresty-${RESTY_VERSION} \
+    && cd /tmp/openresty-${RESTY_VERSION}/bundle/nginx-${NGINX_VERSION}\
     && patch -p1 < ../nginx_upstream_check_module/check_1.16.1+.patch \
+    && cd /tmp/openresty-${RESTY_VERSION} \
     && eval ./configure -j${RESTY_J} ${_RESTY_CONFIG_DEPS} ${RESTY_CONFIG_OPTIONS} ${RESTY_CONFIG_OPTIONS_MORE} ${RESTY_LUAJIT_OPTIONS} \
     && make -j${RESTY_J} \
     && make -j${RESTY_J} install \
