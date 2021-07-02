@@ -38,6 +38,6 @@ jobs:
       - name: Publish Docker
         uses: elgohr/Publish-Docker-Github-Action@3.04
         with:
-          name: prettyapi/hello
+          name: prettyapi/openresty
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
