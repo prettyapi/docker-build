@@ -135,7 +135,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && curl -fSL https://openresty.org/download/openresty-${RESTY_VERSION}.tar.gz -o openresty-${RESTY_VERSION}.tar.gz \
     && tar xzf openresty-${RESTY_VERSION}.tar.gz \
     && cd /tmp/openresty-${RESTY_VERSION}/bundle/nginx-${NGINX_VERSION}\
-    && patch -p1 < ../nginx_upstream_check_module/check_1.16.1+.patch \
+    && patch -p1 < /tmp/nginx_upstream_check_module/check_1.16.1+.patch \
     && cd /tmp/openresty-${RESTY_VERSION} \
     && eval ./configure -j${RESTY_J} ${_RESTY_CONFIG_DEPS} ${RESTY_CONFIG_OPTIONS} ${RESTY_CONFIG_OPTIONS_MORE} ${RESTY_LUAJIT_OPTIONS} \
     && make -j${RESTY_J} \
