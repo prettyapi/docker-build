@@ -1,9 +1,6 @@
 # 基础镜像
 FROM alpine:latest
 
-# 修改源
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-
 # 安装ca 证书
 RUN apk update && \
     apk add --no-cache ca-certificates
