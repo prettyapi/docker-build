@@ -3,6 +3,8 @@ ARG RESTY_IMAGE_TAG="3.13"
 
 FROM ${RESTY_IMAGE_BASE}:${RESTY_IMAGE_TAG}
 
+EXPOSE 80 443
+
 LABEL maintainer="Wen <qinwen923@gmail.com>"
 
 # Docker Build Arguments
