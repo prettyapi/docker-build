@@ -69,6 +69,7 @@ RUN NGINX_CONFIG="\
      && addgroup -S nginx \
      && adduser -D -S -h /www -s /sbin/nologin -G nginx nginx \
      && apk  add  --no-cache --virtual .build-deps \
+        patch \
         gcc \
         libc-dev \
         make \
